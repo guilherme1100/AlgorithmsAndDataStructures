@@ -49,14 +49,27 @@ class SinglyLinkedList {
         return currentNode;
     }
 
-    shift(){
+    shift() {
         if (!this.head) return undefined;
         let currentNode = this.head;
-        this.head= currentNode.next;
+        this.head = currentNode.next;
         this.length--;
         if (this.length === 0) {
             this.tail = null;
         };
         return currentNode;
+    }
+
+    unshift(val) {
+        let newHead = new Node(val)
+        if (!this.head) {
+            this.head = newHead;
+            this.tail = this.head;
+        } else {
+            newHead.next = this.head;
+            this.head = newHead;
+        }
+        this.length++;
+        return this;
     }
 }
