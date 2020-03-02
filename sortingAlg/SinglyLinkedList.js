@@ -30,7 +30,7 @@ class SinglyLinkedList {
     pop() {
         if (!this.head) return undefined;
 
-        let currentNode= this.head;
+        let currentNode = this.head;
         let previousNode = this.head;
 
         while (currentNode.next) {
@@ -39,9 +39,13 @@ class SinglyLinkedList {
         }
 
         this.tail = previousNode;
-        let result = previousNode.next;
         this.tail.next = null;
         this.length--;
-        return result;
+
+        if (this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
+        return currentNode;
     }
 }
