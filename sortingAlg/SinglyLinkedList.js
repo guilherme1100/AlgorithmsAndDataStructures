@@ -1,6 +1,6 @@
 class Node {
     constructor(val) {
-        this.value = val;
+        this.val = val;
         this.next = null;
     }
 }
@@ -80,5 +80,14 @@ class SinglyLinkedList {
             currentNode = currentNode.next;
         }
         return currentNode;
+    }
+
+    set(val, index) {
+        let foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val=val;
+            return true;
+        }
+        return false;
     }
 }
