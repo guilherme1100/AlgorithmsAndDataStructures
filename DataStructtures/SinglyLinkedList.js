@@ -92,28 +92,44 @@ class SinglyLinkedList {
 
     insert(val, index) {
         if (index < 0 || index > this.length) return false;
-        if (index === this.length-1) return !!this.push(val);
-        if (index === 0) return !!this.unshift(val);    
+        if (index === this.length - 1) return !!this.push(val);
+        if (index === 0) return !!this.unshift(val);
         let newNode = new Node(val);
-        let previousNode = this.get(index-1);
-        let temp= previousNode.next;
+        let previousNode = this.get(index - 1);
+        let temp = previousNode.next;
         previousNode.next = newNode;
-        newNode.next=temp;
+        newNode.next = temp;
         this.length++;
         return true;
     }
 
-    remove(index){
+    remove(index) {
         if (index < 0 || index > this.length) return false;
-        if (index === this.length-1) return this.pop();
+        if (index === this.length - 1) return this.pop();
         if (index === 0) return this.shift();
-        
-        let previousNode = this.get(index-1);
-        let nextNode = this.get(index+1);
+
+        let previousNode = this.get(index - 1);
+        let nextNode = this.get(index + 1);
         previousNode.next = nextNode;
 
         this.length--;
     }
 
-    
+    reverse() {
+        let prev = null;
+        let current = this.head;
+        let next; 
+        this.tail=current;
+
+        while (current) {
+            next = current.next; // saves current.next so it can be used as current next interation
+            current.next = prev; // poits next to the previous node
+            prev = current; // save the current node so it can be used as "previous node" on the next interaction
+            current = next; // set the current node of the next interaction;
+        }
+
+        this.head = prev; // here we use the last "previeous node" as head.
+    }
+
+
 }
