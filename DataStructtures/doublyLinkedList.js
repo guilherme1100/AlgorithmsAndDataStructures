@@ -92,10 +92,16 @@ class DoublyLinkedList {
                 counter--;
             }
         }
-
         return currentNode;
+    }
 
-
+    set(val, index) {
+        let selectedNode = this.get(index);
+        if (selectedNode) {
+            selectedNode.val = val;
+            return true;
+        }
+        return false;
     }
 
 }
