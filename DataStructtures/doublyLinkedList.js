@@ -43,7 +43,7 @@ class DoublyLinkedList {
 
           // Increments the length propriety of the List.
           this.length++;
-      } return this
+      } return this;
     }
 
 
@@ -162,6 +162,23 @@ class DoublyLinkedList {
       }
       displayString += `]`;
       return displayString;
+    }
+
+
+    /**
+     * Converts the List class to it's Array representation
+     * @returns {Array} - An Array representation of the List is returned.
+     */
+    toArray(){
+      var cNode = this.head;
+      var displayArray = [cNode.val];
+
+      while (cNode.next != null) {
+        cNode = cNode.next;
+        displayArray.push(cNode.val);
+      }
+
+      return displayArray;
     }
 
 }
