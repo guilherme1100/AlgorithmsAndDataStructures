@@ -15,7 +15,7 @@ class DoublyLinkedList {
 
 
     /**
-     * Creates the functionality to add/push values into our custom List.
+     * Creates the functionality to add/push values into the custom List.
      * @param {number} val - val can be an individual number or multiple numbers
      * to be added into our List.
      * @param {array} val - val can also be a previously existing array passed
@@ -24,42 +24,64 @@ class DoublyLinkedList {
      */
     push(...val) {
       // Check if the argument is an array and removes nested array.
-      if (Array.isArray(val[0])){
-        val = val[0]
-      }
+      if ( Array.isArray(val[0]) ) val = val[0]
 
       for (var tVal of val) {
-        let newNode = new Node(tVal);
-        // Check if the List already has a head. If False, current Node will
-        // be the head.
-        if (!this.head) {
-            this.head = newNode;
-            this.tail = newNode;
-        }
-        // If the List has a head, add next Node to the List.
-        else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
-        }
+          let newNode = new Node(tVal);
+          // Check if the List already has a head. If False, current Node will
+          // be the head.
+          if (!this.head) {
+              this.head = newNode;
+              this.tail = newNode;
+          }
+          // If the List has a head, add next Node to the List.
+          else {
+              this.tail.next = newNode;
+              newNode.prev = this.tail;
+              this.tail = newNode;
+          }
 
-        // Increments the length propriety of the List.
-        this.length++;
+          // Increments the length propriety of the List.
+          this.length++;
       } return this
     }
 
 
-    pop() {
+    /**
+     * Removes the desired value at defined index from the custom List.
+     * @param {number} index - The index at which the Node should be removed
+     * from the List, by default is the List's Tail.
+     * @returns {Node} - The removed Node is returned.
+     */
+    pop(index = this.length - 1) {
+        // Return undefined if the List is empty.
         if (!this.head) return undefined;
-        let temp = this.tail;
+
+        let temp = this.get(index);
+        // Declare empty List if there is only one single value.
         if (this.length === 1) {
             this.head = null;
             this.tail = null;
-        } else {
-            this.tail = temp.prev;
-            this.tail.next = null;
-            temp.prev = null;
         }
+        else {
+            // Reassignment if removed Node is the Tail.
+            if (temp.next === null) {
+                this.tail = temp.prev;
+                temp.prev.next = temp.next;
+            }
+            // Reassignment if removed Node is the Head.
+            else if (temp.prev === null){
+                this.head = temp.next;
+                temp.next.prev = temp.prev;
+            }
+            // Reassignment if removed Node is in the Middle of the List.
+            else{
+              temp.prev.next = temp.next;
+              temp.next.prev = temp.prev;
+            }
+        }
+
+        // Decrements the length propriety of the List.
         this.length--;
         return temp;
     }
