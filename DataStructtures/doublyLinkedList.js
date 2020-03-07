@@ -24,7 +24,7 @@ class DoublyLinkedList {
      */
     push(...val) {
       // Check if the argument is an array and removes nested array.
-      if ( Array.isArray(val[0]) ) val = val[0]
+      if ( Array.isArray(val[0]) ) val = val[0];
 
       for (var tVal of val) {
           let newNode = new Node(tVal);
@@ -145,6 +145,23 @@ class DoublyLinkedList {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * Converts the List class to it's string representation.
+     * @returns {string} - A string representation of the List is returned.
+     */
+    toString(){
+      var cNode = this.head;
+      var displayString = `[${cNode.val}`;
+
+      while (cNode.next != null) {
+        cNode = cNode.next;
+        displayString += `, ${cNode.val}`;
+      }
+      displayString += `]`;
+      return displayString;
     }
 
 }
