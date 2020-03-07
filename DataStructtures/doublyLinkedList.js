@@ -13,20 +13,41 @@ class DoublyLinkedList {
         this.length = 0;
     }
 
-    push(val) {
-        let newNode = new Node(val);
+
+    /**
+     * Creates the functionality to add/push values into our custom List.
+     * @param {number} val - val can be an individual number or multiple numbers
+     * to be added into our List.
+     * @param {array} val - val can also be a previously existing array passed
+     * directly into our List.
+     * @returns {Node?} - To Revise. Is it even needed?
+     */
+    push(...val) {
+      // Check if the argument is an array and removes nested array.
+      if (Array.isArray(val[0])){
+        val = val[0]
+      }
+
+      for (var tVal of val) {
+        let newNode = new Node(tVal);
+        // Check if the List already has a head. If False, current Node will
+        // be the head.
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-        } else {
+        }
+        // If the List has a head, add next Node to the List.
+        else {
             this.tail.next = newNode;
             newNode.prev = this.tail;
             this.tail = newNode;
         }
 
+        // Increments the length propriety of the List.
         this.length++;
-        return this
+      } return this
     }
+
 
     pop() {
         if (!this.head) return undefined;
