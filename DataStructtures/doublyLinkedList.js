@@ -349,4 +349,24 @@ class DoublyLinkedList {
       return (val === cNode.val) ? counter : null;
     }
 
+
+    /**
+     * Finds all appearances of the specified value in the List.
+     * @param {irrelevant} val - The desired value to be found in the List.
+     * @returns {number} - Index(es) of the desired value, if found.
+     */
+    findAll(val){
+      let cNode = this.head;
+      let counter = 0;
+      let indexList = [];
+
+      while (cNode.next != null) {
+        if (val === cNode.val) indexList.push(counter);
+        cNode = cNode.next;
+        counter++;
+      }
+
+      return (indexList.length > 0) ? indexList : null;
+    }
+
 }
