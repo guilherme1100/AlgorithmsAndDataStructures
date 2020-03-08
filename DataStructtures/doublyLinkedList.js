@@ -214,16 +214,18 @@ class DoublyLinkedList {
 
 
     /**
-     * Converts the List class to it's Array representation
+     * Converts the List class to it's Array representation.
+     * @param {boolean} getNodes - If true an array of Nodes will be returned
+     * instead of an array of Node values. False by default.
      * @returns {Array} - An Array representation of the List is returned.
      */
-    toArray(){
-      var cNode = this.head;
-      var displayArray = [cNode.val];
+    toArray(getNodes = false){
+      let cNode = this.head;
+      let displayArray = [getNodes ? cNode : cNode.val];
 
       while (cNode.next != null) {
         cNode = cNode.next;
-        displayArray.push(cNode.val);
+        displayArray.push(getNodes ? cNode : cNode.val);
       }
 
       return displayArray;
