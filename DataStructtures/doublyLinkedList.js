@@ -251,7 +251,15 @@ class DoublyLinkedList {
     }
 
 
+    /**
+     * Inserts a new Node at the specified Index.
+     * @param {irrelevant} val - The value of new Node, any data format accepted.
+     * @param {number} index - Index desired to insert new Node.
+     * @returns {boolean} - Returns true if opreation is successful and
+     * vice-versa.
+     */
     insert(val, index) {
+        // Return null if index is out of range.
         if (index < 0 || index >= this.length) return false;
         if (index === 0) return !!this.unshift(val);
         if (index === this.length) return !!this.push(val);
@@ -266,9 +274,7 @@ class DoublyLinkedList {
         newNode.next = selectedNode;
 
         this.length++;
-
         return true;
-
     }
 
 
