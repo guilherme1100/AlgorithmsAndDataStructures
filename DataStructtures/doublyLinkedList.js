@@ -27,7 +27,7 @@ class DoublyLinkedList {
 
 
     /**
-     * Creates the functionality to add/push values into the custom List.
+     * Creates the functionality to add/push values into the end of the List.
      * @param {number} val - val can be an individual number or multiple numbers
      * to be added into the List.
      * @param {array} val - val can also be a previously existing array or
@@ -44,13 +44,13 @@ class DoublyLinkedList {
           }
 
           let newNode = new Node(tVal);
-          // Check if the List already has a head. If False, current Node will
-          // be the head.
-          if (!this.head) {
+          // Check if the List already has a tail. If False, new Node will
+          // be the tail.
+          if (!this.tail) {
               this.head = newNode;
               this.tail = newNode;
           }
-          // If the List has a head, add next Node to the List.
+          // If the List has a tail, change new Node to be new tail of the List.
           else {
               this.tail.next = newNode;
               newNode.prev = this.tail;
@@ -73,13 +73,13 @@ class DoublyLinkedList {
     _pushArray(arr) {
       for (var val of arr) {
           let newNode = new Node(val);
-          // Check if the List already has a head. If False, current Node will
-          // be the head.
-          if (!this.head) {
+          // Check if the List already has a tail. If False, new Node will
+          // be the tail.
+          if (!this.tail) {
               this.head = newNode;
               this.tail = newNode;
           }
-          // If the List has a head, add next Node to the List.
+          // If the List has a tail, change new Node to be new tail of the List.
           else {
               this.tail.next = newNode;
               newNode.prev = this.tail;
