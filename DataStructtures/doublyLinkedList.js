@@ -14,15 +14,15 @@ class DoublyLinkedList {
     /**
      * Starts the list Object, links any parameters to the Push() Method.
      * @param {number} param - param can be an individual number or multiple
-     * numbers to be added into our List.
-     * @param {array} param - param can also be a previously existing array
-     * passed directly into our List.
+     * numbers to be added into the List.
+     * @param {array} param - param can also be a previously existing array or
+     * multiple arrays passed directly into the List.
      */
     constructor(...param) {
         this.head = null;
         this.tail = null;
         this.length = 0;
-        if (param) this.push(param);
+        if (param.length > 0) this.push(param);
     }
 
 
