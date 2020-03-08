@@ -1,4 +1,8 @@
 class Node {
+    /**
+     * Starts a Node Object.
+     * @param {number} val - val will be the value of the Node.
+     */
     constructor(val) {
         this.val = val;
         this.next = null;
@@ -7,19 +11,27 @@ class Node {
 }
 
 class DoublyLinkedList {
-    constructor() {
+    /**
+     * Starts the list Object, links any parameters to the Push() Method.
+     * @param {number} param - param can be an individual number or multiple
+       numbers to be added into our List.
+     * @param {array} param - param can also be a previously existing array
+       passed directly into our List.
+     */
+    constructor(...param) {
         this.head = null;
         this.tail = null;
         this.length = 0;
+        if (param) this.push(param);
     }
 
 
     /**
      * Creates the functionality to add/push values into the custom List.
      * @param {number} val - val can be an individual number or multiple numbers
-     * to be added into our List.
+       to be added into our List.
      * @param {array} val - val can also be a previously existing array passed
-     * directly into our List.
+       directly into our List.
      * @returns {Node?} - To Revise. Is it even needed?
      */
     push(...val) {
