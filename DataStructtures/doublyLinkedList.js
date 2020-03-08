@@ -14,9 +14,9 @@ class DoublyLinkedList {
     /**
      * Starts the list Object, links any parameters to the Push() Method.
      * @param {number} param - param can be an individual number or multiple
-       numbers to be added into our List.
+     * numbers to be added into our List.
      * @param {array} param - param can also be a previously existing array
-       passed directly into our List.
+     * passed directly into our List.
      */
     constructor(...param) {
         this.head = null;
@@ -29,16 +29,20 @@ class DoublyLinkedList {
     /**
      * Creates the functionality to add/push values into the custom List.
      * @param {number} val - val can be an individual number or multiple numbers
-       to be added into our List.
-     * @param {array} val - val can also be a previously existing array passed
-       directly into our List.
-     * @returns {Node?} - To Revise. Is it even needed?
+     * to be added into the List.
+     * @param {array} val - val can also be a previously existing array or
+     * multiple arrays passed directly into the List.
+     * @returns {DoublyLinkedList} - Returns the updated List.
      */
     push(...val) {
-      // Check if the argument is an array and removes nested array.
-      if ( Array.isArray(val[0]) ) val = val[0];
-
       for (var tVal of val) {
+          // Check if the argument is an array and removes nested array by
+          // calling support method _pushArray().
+          if ( Array.isArray(tVal) ) {
+              this._pushArray(tVal);
+              continue;
+          }
+
           let newNode = new Node(tVal);
           // Check if the List already has a head. If False, current Node will
           // be the head.
@@ -56,6 +60,35 @@ class DoublyLinkedList {
           // Increments the length propriety of the List.
           this.length++;
       } return this;
+    }
+
+
+    /**
+     * Supports the functionality to add/push arrays directly into the custom
+     * List. Method can be called only to support Push() and should never
+     * be used outside of Push().
+     * @param {array} arr - arr can is a previously existing array passed
+     * directly into our List.
+     */
+    _pushArray(arr) {
+      for (var val of arr) {
+          let newNode = new Node(val);
+          // Check if the List already has a head. If False, current Node will
+          // be the head.
+          if (!this.head) {
+              this.head = newNode;
+              this.tail = newNode;
+          }
+          // If the List has a head, add next Node to the List.
+          else {
+              this.tail.next = newNode;
+              newNode.prev = this.tail;
+              this.tail = newNode;
+          }
+
+          // Increments the length propriety of the List.
+          this.length++;
+      }
     }
 
 
