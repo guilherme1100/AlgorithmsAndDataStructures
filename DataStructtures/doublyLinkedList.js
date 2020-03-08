@@ -247,11 +247,12 @@ class DoublyLinkedList {
      */
     set(val, index) {
         let selectedNode = this.get(index);
-        if (!!selectedNode) selectedNode.val = val;
-        return true;
+        if (selectedNode) {
+            selectedNode.val = val;
+            return true;
+        }
         return false;
     }
-
 
     /**
      * Inserts a new Node at the specified Index.
