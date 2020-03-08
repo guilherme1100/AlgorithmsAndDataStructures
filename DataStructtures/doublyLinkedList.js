@@ -131,21 +131,77 @@ class DoublyLinkedList {
         return temp;
     }
 
-    unshift(val) {
 
-        const newNode = new Node(val);
+    /**
+     * Creates the functionality to add/unshift values into the start of the
+     * List.
+     * @param {number} val - val can be an individual number or multiple numbers
+     * to be added into the List.
+     * @param {array} val - val can also be a previously existing array or
+     * multiple arrays passed directly into the List.
+     * @returns {DoublyLinkedList} - Returns the updated List.
+     */
+    unshift(...val) {
+      // List is reversed in order to add values in the same order that they
+      // were inserted into the method param.
+      for (var tVal of val.reverse()) {
+          // Check if the argument is an array and remove nested array by
+          // calling support method _unshiftArray().
+          if ( Array.isArray(tVal) ) {
+              this._unshiftArray(tVal);
+              continue;
+          }
 
-        if (this.length === 0) {
-            this.head = newNode;
-            this.tail = newNode;
-        } else {
-            newNode.next = this.head;
-            this.head.prev = newNode;
-            this.head = newNode;
-        }
-        this.length++
-        return this;
+          let newNode = new Node(tVal);
+          // Check if the List already has a head. If False, current Node will
+          // be the head.
+          if (!this.head) {
+              this.head = newNode;
+              this.tail = newNode;
+          }
+          // If the List has a head, change new Node to be new head of the List.
+          else {
+              newNode.next = this.head;
+              this.head.prev = newNode;
+              this.head = newNode;
+          }
+
+          // Increments the length propriety of the List.
+          this.length++;
+      } return this;
     }
+
+
+    /**
+     * Supports the functionality to add/unshift arrays directly into the custom
+     * List. Method can be called only to support Unshift() and should never
+     * be used outside of Unshift().
+     * @param {Array} arr - arr can is a previously existing array passed
+     * directly into the start of the List.
+     */
+    _unshiftArray(arr) {
+      // List is reversed in order to add values in the same order that they
+      // were inserted into the method param.
+      for (var val of arr.reverse()) {
+          let newNode = new Node(val);
+          // Check if the List already has a head. If False, current Node will
+          // be the head.
+          if (!this.head) {
+              this.head = newNode;
+              this.tail = newNode;
+          }
+          // If the List has a head, change new Node to be new head of the List.
+          else {
+              newNode.next = this.head;
+              this.head.prev = newNode;
+              this.head = newNode;
+          }
+
+          // Increments the length propriety of the List.
+          this.length++;
+      }
+    }
+
 
     get(index) {
         if (index < 0 || index >= this.length) return null;
