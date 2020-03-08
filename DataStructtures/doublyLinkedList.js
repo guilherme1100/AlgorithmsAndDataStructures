@@ -35,31 +35,32 @@ class DoublyLinkedList {
      * @returns {DoublyLinkedList} - Returns the updated List.
      */
     push(...val) {
-      for (var tVal of val) {
-          // Check if the argument is an array and removes nested array by
-          // calling support method _pushArray().
-          if ( Array.isArray(tVal) ) {
-              this._pushArray(tVal);
-              continue;
-          }
+        for (var tVal of val) {
+            // Check if the argument is an array and removes nested array by
+            // calling support method _pushArray().
+            if (Array.isArray(tVal)) {
+                this._pushArray(tVal);
+                continue;
+            }
 
-          let newNode = new Node(tVal);
-          // Check if the List already has a tail. If False, new Node will
-          // be the tail.
-          if (!this.tail) {
-              this.head = newNode;
-              this.tail = newNode;
-          }
-          // If the List has a tail, change new Node to be new tail of the List.
-          else {
-              this.tail.next = newNode;
-              newNode.prev = this.tail;
-              this.tail = newNode;
-          }
+            let newNode = new Node(tVal);
+            // Check if the List already has a tail. If False, new Node will
+            // be the tail.
+            if (!this.tail) {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            // If the List has a tail, change new Node to be new tail of the List.
+            else {
+                this.tail.next = newNode;
+                newNode.prev = this.tail;
+                this.tail = newNode;
+            }
 
-          // Increments the length propriety of the List.
-          this.length++;
-      } return this;
+            // Increments the length propriety of the List.
+            this.length++;
+        }
+        return this;
     }
 
 
@@ -71,24 +72,24 @@ class DoublyLinkedList {
      * directly into our List.
      */
     _pushArray(arr) {
-      for (var val of arr) {
-          let newNode = new Node(val);
-          // Check if the List already has a tail. If False, new Node will
-          // be the tail.
-          if (!this.tail) {
-              this.head = newNode;
-              this.tail = newNode;
-          }
-          // If the List has a tail, change new Node to be new tail of the List.
-          else {
-              this.tail.next = newNode;
-              newNode.prev = this.tail;
-              this.tail = newNode;
-          }
+        for (var val of arr) {
+            let newNode = new Node(val);
+            // Check if the List already has a tail. If False, new Node will
+            // be the tail.
+            if (!this.tail) {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            // If the List has a tail, change new Node to be new tail of the List.
+            else {
+                this.tail.next = newNode;
+                newNode.prev = this.tail;
+                this.tail = newNode;
+            }
 
-          // Increments the length propriety of the List.
-          this.length++;
-      }
+            // Increments the length propriety of the List.
+            this.length++;
+        }
     }
 
 
@@ -107,22 +108,21 @@ class DoublyLinkedList {
         if (this.length === 1) {
             this.head = null;
             this.tail = null;
-        }
-        else {
+        } else {
             // Reassignment if removed Node is the Tail.
             if (temp.next === null) {
                 this.tail = temp.prev;
                 temp.prev.next = temp.next;
             }
             // Reassignment if removed Node is the Head.
-            else if (temp.prev === null){
+            else if (temp.prev === null) {
                 this.head = temp.next;
                 temp.next.prev = temp.prev;
             }
             // Reassignment if removed Node is in the Middle of the List.
-            else{
-              temp.prev.next = temp.next;
-              temp.next.prev = temp.prev;
+            else {
+                temp.prev.next = temp.next;
+                temp.next.prev = temp.prev;
             }
         }
 
@@ -142,33 +142,34 @@ class DoublyLinkedList {
      * @returns {DoublyLinkedList} - Returns the updated List.
      */
     unshift(...val) {
-      // List is reversed in order to add values in the same order that they
-      // were inserted into the method param.
-      for (var tVal of val.reverse()) {
-          // Check if the argument is an array and remove nested array by
-          // calling support method _unshiftArray().
-          if ( Array.isArray(tVal) ) {
-              this._unshiftArray(tVal);
-              continue;
-          }
+        // List is reversed in order to add values in the same order that they
+        // were inserted into the method param.
+        for (var tVal of val.reverse()) {
+            // Check if the argument is an array and remove nested array by
+            // calling support method _unshiftArray().
+            if (Array.isArray(tVal)) {
+                this._unshiftArray(tVal);
+                continue;
+            }
 
-          let newNode = new Node(tVal);
-          // Check if the List already has a head. If False, current Node will
-          // be the head.
-          if (!this.head) {
-              this.head = newNode;
-              this.tail = newNode;
-          }
-          // If the List has a head, change new Node to be new head of the List.
-          else {
-              newNode.next = this.head;
-              this.head.prev = newNode;
-              this.head = newNode;
-          }
+            let newNode = new Node(tVal);
+            // Check if the List already has a head. If False, current Node will
+            // be the head.
+            if (!this.head) {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            // If the List has a head, change new Node to be new head of the List.
+            else {
+                newNode.next = this.head;
+                this.head.prev = newNode;
+                this.head = newNode;
+            }
 
-          // Increments the length propriety of the List.
-          this.length++;
-      } return this;
+            // Increments the length propriety of the List.
+            this.length++;
+        }
+        return this;
     }
 
 
@@ -180,26 +181,26 @@ class DoublyLinkedList {
      * directly into the start of the List.
      */
     _unshiftArray(arr) {
-      // List is reversed in order to add values in the same order that they
-      // were inserted into the method param.
-      for (var val of arr.reverse()) {
-          let newNode = new Node(val);
-          // Check if the List already has a head. If False, current Node will
-          // be the head.
-          if (!this.head) {
-              this.head = newNode;
-              this.tail = newNode;
-          }
-          // If the List has a head, change new Node to be new head of the List.
-          else {
-              newNode.next = this.head;
-              this.head.prev = newNode;
-              this.head = newNode;
-          }
+        // List is reversed in order to add values in the same order that they
+        // were inserted into the method param.
+        for (var val of arr.reverse()) {
+            let newNode = new Node(val);
+            // Check if the List already has a head. If False, current Node will
+            // be the head.
+            if (!this.head) {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            // If the List has a head, change new Node to be new head of the List.
+            else {
+                newNode.next = this.head;
+                this.head.prev = newNode;
+                this.head = newNode;
+            }
 
-          // Increments the length propriety of the List.
-          this.length++;
-      }
+            // Increments the length propriety of the List.
+            this.length++;
+        }
     }
 
 
@@ -246,7 +247,8 @@ class DoublyLinkedList {
      */
     set(val, index) {
         let selectedNode = this.get(index);
-        if (!!selectedNode) selectedNode.val = val; return true;
+        if (!!selectedNode) selectedNode.val = val;
+        return true;
         return false;
     }
 
@@ -282,16 +284,16 @@ class DoublyLinkedList {
      * Converts the List class to it's string representation.
      * @returns {string} - A string representation of the List is returned.
      */
-    toString(){
-      var cNode = this.head;
-      var displayString = `[${cNode.val}`;
+    toString() {
+        var cNode = this.head;
+        var displayString = `[${cNode.val}`;
 
-      while (cNode.next != null) {
-        cNode = cNode.next;
-        displayString += `, ${cNode.val}`;
-      }
-      displayString += `]`;
-      return displayString;
+        while (cNode.next != null) {
+            cNode = cNode.next;
+            displayString += `, ${cNode.val}`;
+        }
+        displayString += `]`;
+        return displayString;
     }
 
 
@@ -301,16 +303,16 @@ class DoublyLinkedList {
      * instead of an array of Node values. False by default.
      * @returns {Array} - An Array representation of the List is returned.
      */
-    toArray(getNodes = false){
-      let cNode = this.head;
-      let displayArray = [getNodes ? cNode : cNode.val];
+    toArray(getNodes = false) {
+        let cNode = this.head;
+        let displayArray = [getNodes ? cNode : cNode.val];
 
-      while (cNode.next != null) {
-        cNode = cNode.next;
-        displayArray.push(getNodes ? cNode : cNode.val);
-      }
+        while (cNode.next != null) {
+            cNode = cNode.next;
+            displayArray.push(getNodes ? cNode : cNode.val);
+        }
 
-      return displayArray;
+        return displayArray;
     }
 
 
@@ -319,16 +321,19 @@ class DoublyLinkedList {
      * @param {irrelevant} val - The desired value to be found in the List.
      * @returns {number} - Index of the desired value, if found.
      */
-    find(val){
-      let cNode = this.head;
-      let counter = 0;
 
-      while (val != cNode.val && cNode.next != null) {
-        cNode = cNode.next;
-        counter++;
-      }
+    find(val, reverse = false) {
+        let cNode = reverse ? this.tail : this.head;
+        let counter = reverse ? this.length - 1 : 0;
 
-      return (val === cNode.val) ? counter : null;
+        while (val != cNode.val && (reverse ? cNode.prev : cNode.next) != null) {
+
+            cNode = reverse ? cNode.prev : cNode.next;
+            reverse ? counter-- : counter++
+
+        }
+
+        return (val === cNode.val) ? counter : null;
     }
 
 
@@ -337,16 +342,16 @@ class DoublyLinkedList {
      * @param {irrelevant} val - The desired value to be found in the List.
      * @returns {number} - Index of the desired value, if found.
      */
-    rfind(val){
-      let cNode = this.tail;
-      let counter = this.length - 1;
+    rfind(val) {
+        let cNode = this.tail;
+        let counter = this.length - 1;
 
-      while (val != cNode.val && cNode.prev != null) {
-        cNode = cNode.prev;
-        counter--;
-      }
+        while (val != cNode.val && cNode.prev != null) {
+            cNode = cNode.prev;
+            counter--;
+        }
 
-      return (val === cNode.val) ? counter : null;
+        return (val === cNode.val) ? counter : null;
     }
 
 
@@ -355,18 +360,18 @@ class DoublyLinkedList {
      * @param {irrelevant} val - The desired value to be found in the List.
      * @returns {number} - Index(es) of the desired value, if found.
      */
-    findAll(val){
-      let cNode = this.head;
-      let counter = 0;
-      let indexList = [];
+    findAll(val) {
+        let cNode = this.head;
+        let counter = 0;
+        let indexList = [];
 
-      while (cNode.next != null) {
-        if (val === cNode.val) indexList.push(counter);
-        cNode = cNode.next;
-        counter++;
-      }
+        while (cNode.next != null) {
+            if (val === cNode.val) indexList.push(counter);
+            cNode = cNode.next;
+            counter++;
+        }
 
-      return (indexList.length > 0) ? indexList : null;
+        return (indexList.length > 0) ? indexList : null;
     }
 
 }
