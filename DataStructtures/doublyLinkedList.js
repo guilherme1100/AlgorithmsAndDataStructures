@@ -315,7 +315,7 @@ class DoublyLinkedList {
 
 
     /**
-     * Finds the first desired value appearance in the List.
+     * Finds the first specified value appearance in the List.
      * @param {irrelevant} val - The desired value to be found in the List.
      * @returns {number} - Index of the desired value, if found.
      */
@@ -323,7 +323,7 @@ class DoublyLinkedList {
       let cNode = this.head;
       let counter = 0;
 
-      while (val != cNode.val) {
+      while (val != cNode.val && cNode.next != null) {
         cNode = cNode.next;
         counter++;
       }
