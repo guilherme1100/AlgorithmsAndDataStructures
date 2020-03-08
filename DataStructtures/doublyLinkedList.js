@@ -283,7 +283,7 @@ class DoublyLinkedList {
     /**
      * Converts the List class to it's string representation.
      * @returns {string} - A string representation of the List is returned.
-    */
+     */
     toString() {
         var cNode = this.head;
         var displayString = `[${cNode.val}`;
