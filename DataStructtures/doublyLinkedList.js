@@ -283,7 +283,7 @@ class DoublyLinkedList {
     /**
      * Converts the List class to it's string representation.
      * @returns {string} - A string representation of the List is returned.
-     */
+    */
     toString() {
         var cNode = this.head;
         var displayString = `[${cNode.val}`;
@@ -319,6 +319,7 @@ class DoublyLinkedList {
     /**
      * Finds the first specified value appearance in the List.
      * @param {irrelevant} val - The desired value to be found in the List.
+     * @param {boolean} reverse - if reverse is true, the function return the last occurence of the value.
      * @returns {number} - Index of the desired value, if found.
      */
 
@@ -327,33 +328,12 @@ class DoublyLinkedList {
         let counter = reverse ? this.length - 1 : 0;
 
         while (val != cNode.val && (reverse ? cNode.prev : cNode.next) != null) {
-
             cNode = reverse ? cNode.prev : cNode.next;
             reverse ? counter-- : counter++
-
         }
 
         return (val === cNode.val) ? counter : null;
     }
-
-
-    /**
-     * Finds the last specified value appearance in the List.
-     * @param {irrelevant} val - The desired value to be found in the List.
-     * @returns {number} - Index of the desired value, if found.
-     */
-    rfind(val) {
-        let cNode = this.tail;
-        let counter = this.length - 1;
-
-        while (val != cNode.val && cNode.prev != null) {
-            cNode = cNode.prev;
-            counter--;
-        }
-
-        return (val === cNode.val) ? counter : null;
-    }
-
 
     /**
      * Finds all appearances of the specified value in the List.
