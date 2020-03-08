@@ -205,7 +205,7 @@ class DoublyLinkedList {
 
     /**
      * Gets the Node at the specified Index.
-     * @param {index} index - Index of the Node desired to get.
+     * @param {number} index - Index of the Node desired to get.
      * @returns {Node} - Returns the Node at specified Index.
      */
     get(index) {
