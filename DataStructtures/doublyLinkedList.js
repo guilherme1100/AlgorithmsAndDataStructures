@@ -331,4 +331,22 @@ class DoublyLinkedList {
       return (val === cNode.val) ? counter : null;
     }
 
+
+    /**
+     * Finds the last specified value appearance in the List.
+     * @param {irrelevant} val - The desired value to be found in the List.
+     * @returns {number} - Index of the desired value, if found.
+     */
+    rfind(val){
+      let cNode = this.tail;
+      let counter = this.length - 1;
+
+      while (val != cNode.val && cNode.prev != null) {
+        cNode = cNode.prev;
+        counter--;
+      }
+
+      return (val === cNode.val) ? counter : null;
+    }
+
 }
