@@ -203,9 +203,18 @@ class DoublyLinkedList {
     }
 
 
+    /**
+     * Gets the Node at the specified Index.
+     * @param {index} index - Index of the Node desired to get.
+     * @returns {Node} - Returns the Node at specified Index.
+     */
     get(index) {
+        // Return null if index is out of range.
         if (index < 0 || index >= this.length) return null;
+
         let currentNode, counter;
+        // Start searching at the start of the List if index is in the
+        // first half of the List's length.
         if (index < this.length / 2) {
             counter = 0;
             currentNode = this.head;
@@ -213,7 +222,10 @@ class DoublyLinkedList {
                 currentNode = currentNode.next;
                 counter++;
             }
-        } else {
+        }
+        // Start searching at the end of the List if index is in the
+        // second half of the List's length.
+        else {
             counter = this.length - 1;
             currentNode = this.tail;
             while (counter !== index) {
@@ -223,6 +235,7 @@ class DoublyLinkedList {
         }
         return currentNode;
     }
+    
 
     set(val, index) {
         let selectedNode = this.get(index);
