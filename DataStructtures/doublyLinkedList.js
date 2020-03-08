@@ -365,6 +365,7 @@ class DoublyLinkedList {
         cNode = cNode.next;
         counter++;
       }
+      if (val === cNode.val) indexList.push(counter);
 
       return (indexList.length > 0) ? indexList : null;
     }
