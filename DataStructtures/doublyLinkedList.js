@@ -235,14 +235,21 @@ class DoublyLinkedList {
         }
         return currentNode;
     }
-    
 
+
+    /**
+     * Changes the value of the node at the specified Index.
+     * @param {irrelevant} val - The new value to set, any data format accepted.
+     * @param {number} index - Index of the Node desired to change.
+     * @returns {boolean} - Returns true if opreation is successful and
+     * vice-versa.
+     */
     set(val, index) {
         let selectedNode = this.get(index);
-        if (selectedNode) return false;
-        selectedNode.val = val;
-        return true;
+        if (!!selectedNode) selectedNode.val = val; return true;
+        return false;
     }
+
 
     insert(val, index) {
         if (index < 0 || index >= this.length) return false;
