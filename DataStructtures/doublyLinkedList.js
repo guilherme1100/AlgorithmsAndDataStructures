@@ -336,23 +336,61 @@ class DoublyLinkedList {
         return (val === cNode.val) ? counter : null;
     }
 
+  
     /**
      * Finds all appearances of the specified value in the List.
      * @param {irrelevant} val - The desired value to be found in the List.
      * @returns {number} - Index(es) of the desired value, if found.
      */
-    findAll(val) {
+    findAll(val){
+      let cNode = this.head;
+      let counter = 0;
+      let indexList = [];
+
+      while (cNode.next != null) {
+        if (val === cNode.val) indexList.push(counter);
+        cNode = cNode.next;
+        counter++;
+      }
+      if (val === cNode.val) indexList.push(counter);
+
+      return (indexList.length > 0) ? indexList : null;
+    }
+
+
+    /**
+     * Removes all appearances of the specified value(s) in the List.
+     * @param {irrelevant} val - The desired value(s) to be removed from the
+     * List.
+     * @returns {number} - Returns the ammount of values removed from the List.
+     */
+    remove(...val){
         let cNode = this.head;
         let counter = 0;
-        let indexList = [];
 
         while (cNode.next != null) {
-            if (val === cNode.val) indexList.push(counter);
-            cNode = cNode.next;
-            counter++;
+          if (val.includes(cNode.val)){
+              cNode.next.prev = cNode.prev;
+              if (cNode.prev){
+                  cNode.prev.next = cNode.next;
+              } else {
+                this.head = cNode.next;
+              }
+              counter++;
+          }
+          cNode = cNode.next;
         }
 
-        return (indexList.length > 0) ? indexList : null;
+        if (val.includes(cNode.val)){
+            this.tail = cNode.prev;
+            if (cNode.prev){
+                cNode.prev.next = cNode.next;
+            } else {
+              this.head = cNode.next;
+            }
+            counter++;
+        } return counter;
     }
+
 
 }
