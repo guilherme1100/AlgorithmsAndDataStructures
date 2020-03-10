@@ -1,4 +1,4 @@
-var data = [
+[
   {
     "title":"Violence persists inside Alabama prisons"
   },
@@ -118,5 +118,5 @@ var data = [
   },
   {
     "title":"STEM professors’ beliefs on intelligence may widen the racial achievement gap"
-  },
+  }
 ]

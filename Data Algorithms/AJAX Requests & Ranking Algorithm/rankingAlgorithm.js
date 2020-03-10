@@ -19,5 +19,5 @@ getTopMatches = (typed_text, data, quantity = 5) => {
     }
     successfulMatches.sort((a, b) => (a.rating > b.rating) ? 1 : -1)
 
-    return (successfulMatches.length > 0) ? successfulMatches.slice(0, quantity) : null;
+    return (successfulMatches.length > 0 && typed_text.length > 0) ? successfulMatches.slice(0, quantity) : null;
 }
