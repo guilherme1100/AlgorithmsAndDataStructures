@@ -14,6 +14,8 @@ getTopMatches = (typed_text, data, quantity = 5) => {
         if (lowerTitle.includes(typed_text)){
             newEntry = {};
             newEntry.title = i.title;
+            newEntry.link = i.link;
+            newEntry.date = i.date;
             newEntry.rating = lowerTitle.indexOf(typed_text);
             successfulMatches.push(newEntry);
         }

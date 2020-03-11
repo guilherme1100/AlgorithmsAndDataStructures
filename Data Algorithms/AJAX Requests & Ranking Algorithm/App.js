@@ -23,7 +23,7 @@ searchInput.addEventListener('input', function(){
     for (var result of resultList) {
 
       let htmlDefaultItem =  `<div class="request-item">
-                                <a href="#">${result.title}</a>
+                                <a href="${result.link}" target="_blank">${result.title}</a>
                               </div>`;
       htmlBuilder += htmlDefaultItem;
     }
