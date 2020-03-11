@@ -1,12 +1,33 @@
-// 1. create a new XMLHttpRequest object -- an object like any other!
-var myRequest = new XMLHttpRequest();
-// 2. open the request and pass the HTTP method name and the resource as parameters
-myRequest.open('GET', 'App.html');
-// 3. write a function that runs anytime the state of the AJAX request changes
-myRequest.onreadystatechange = function () {
-    // 4. check if the request has a readyState of 4, which indicates the server has responded (complete)
-    if (myRequest.readyState === 4) {
-        // 5. insert the text sent by the server into the HTML of the 'ajax-content'
-        document.getElementById('ajax-content').innerHTML = myRequest.responseText;
+window.onload = function(){
+  var http = new XMLHttpRequest();
+
+  http.onreadystatechange = function(){
+    if (http.readyState === 4 && http.status === 200){
+      masterData = JSON.parse(http.response);
     }
+  };
+
+  http.open("GET", "./resources/data.json", true);
+  http.send();
 };
+
+const searchInput = document.querySelector(".search-input")
+const resultsDisplay = document.querySelector(".requests")
+
+searchInput.addEventListener('input', function(){
+  let searchText = searchInput.value;
+  let resultList = getTopMatches(searchText, masterData);
+  let htmlBuilder = "";
+
+  if (resultList != null) {
+    for (var result of resultList) {
+
+      let htmlDefaultItem =  `<div class="request-item">
+                                <a href="#">${result.title}</a>
+                              </div>`;
+      htmlBuilder += htmlDefaultItem;
+    }
+  }
+
+  resultsDisplay.innerHTML = htmlBuilder;
+});

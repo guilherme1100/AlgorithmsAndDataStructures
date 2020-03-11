@@ -40,6 +40,12 @@
   fill: #9AA0A6;
   display: block;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+a{
+  color: #5f6caf;
+  text-decoration: none;
 }
 
 .requests{
@@ -47,11 +53,14 @@
   width: 42%;
   border-left: 1px solid #dfe1e5;
   border-right: 1px solid #dfe1e5;
-  display: none;
 }
 
 
 .request-item{
   padding: 10px;
   border-bottom: 0.8px solid #dfe1e5;
+}
+
+.request-item:hover{
+  background: #edf7fa;
 }
