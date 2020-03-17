@@ -22,11 +22,8 @@ searchInput.addEventListener('input', function(){
   if (resultList != null) {
     for (var result of resultList) {
 
-      let init = result.rating
-      let end = result.rating + searchText.length
-
       let htmlDefaultItem =  `<div class="request-item">
-                                <a href="${result.link}" target="_blank">${result.title.slice(0,init)}<strong>${result.title.slice(init,end)}</strong>${result.title.slice(end)}</a>
+                                <a href="${result.link}" target="_blank">${result.title}</a>
                               </div>`;
       htmlBuilder += htmlDefaultItem;
     }
