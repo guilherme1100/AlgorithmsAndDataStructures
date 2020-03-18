@@ -116,3 +116,29 @@ getKeyWordRating = (title, typedText) => {
   }
   return (count > 0) ? getRelativeFieldRating(total, arrayMin(index), multiplier = count) : 0;
 }
+
+
+makeTestP = (title, typedText) => {
+    for (keyword of typedText.trim().split(" ")) {
+        keyword = keyword.slice(0,-1);
+        if (title.includes(keyword)){
+            title = title + " "
+            tempInx = title.indexOf(keyword)
+            afterInx = title.slice(tempInx).indexOf(" ") + tempInx
+            title = (title.slice(0,tempInx) + '*$%' + title.slice(tempInx,afterInx) + '$%*' + title.slice(afterInx))
+        }
+    }
+    buildTestP(title.trim().split('*'))
+}
+
+
+buildTestP = (arr) => {
+    tempStr = ''
+    for (keyWord of arr) {
+        if (keyWord.startsWith('$%')){
+          keyWord = keyWord.slice(2,-2)
+        }
+        tempStr += keyWord
+    }
+    console.log(tempStr)
+}
