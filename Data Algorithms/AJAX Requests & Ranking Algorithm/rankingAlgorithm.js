@@ -7,17 +7,18 @@
  * @returns {array} - List with the Top matches.
  */
 getTopMatches = (typedText, data, quantity = 5) => {
-    successfulMatches = [];
-    typedText = typedText.toLowerCase();
-    for (var i of data) {
-        var lowerTitle = i.title.toLowerCase();
-        var tempRating = getTotalRating(lowerTitle, typedText);
-        if (tempRating > 0.5){
+    let successfulMatches = [];
+    let minRating = 0.5;
+    let typedText = typedText.toLowerCase();
+    for (let entry of data) {
+        let lowerTitle = entry.title.toLowerCase();
+        let entryRating = getTotalRating(lowerTitle, typedText);
+        if (entryRating > minRating){
           newEntry = {
-            title: i.title,
-            link: i.link,
-            date: i.date,
-            rating: tempRating
+            title: entry.title,
+            link: entry.link,
+            date: entry.date,
+            rating: entryRating
           };
           successfulMatches.push(newEntry);
         }
