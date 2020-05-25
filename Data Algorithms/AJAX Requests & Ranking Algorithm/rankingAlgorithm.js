@@ -47,9 +47,9 @@ arrayMin = (arr) => {
  * @returns {number} - Max. of the array.
  */
 arrayMax = (arr) => {
-  return arr.reduce(function (a, b) {
-    return ( (a > b) ? a : b );
-  });
+  return arr.reduce(
+    (a, b) => ( (a > b) ? a : b )
+  );
 }
 
 
