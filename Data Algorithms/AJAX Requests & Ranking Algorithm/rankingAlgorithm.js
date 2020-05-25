@@ -13,11 +13,12 @@ getTopMatches = (typedText, data, quantity = 5) => {
         var lowerTitle = i.title.toLowerCase();
         var tempRating = getTotalRating(lowerTitle, typedText);
         if (tempRating > 0.5){
-          newEntry = {};
-          newEntry.title = i.title;
-          newEntry.link = i.link;
-          newEntry.date = i.date;
-          newEntry.rating = tempRating
+          newEntry = {
+            title: i.title,
+            link: i.link,
+            date: i.date,
+            rating: tempRating
+          };
           successfulMatches.push(newEntry);
         }
     }
