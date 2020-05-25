@@ -30,30 +30,6 @@ getTopMatches = (typedText, data, quantity = 5) => {
 
 
 /**
- * Given an array, returns the minimum value present in the array.
- * @param {array} arr - array to find the min.
- * @returns {number} - Min. of the array.
- */
-arrayMin = (arr) => {
-  return arr.reduce(
-    (a, b) => ( (a < b) ? a : b )
-  );
-}
-
-
-/**
- * Given an array, returns the maximum value present in the array.
- * @param {array} arr - array to find the max.
- * @returns {number} - Max. of the array.
- */
-arrayMax = (arr) => {
-  return arr.reduce(
-    (a, b) => ( (a > b) ? a : b )
-  );
-}
-
-
-/**
  * Retrieves the % from 0 to 1 of a relative value in a total context or the
  reverse of it.
  * @param {number} total - the total value or the 100% mark.

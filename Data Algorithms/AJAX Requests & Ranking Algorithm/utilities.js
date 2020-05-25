@@ -14,3 +14,27 @@ searchInput.addEventListener('focusout', (event) => {
   inputBox.style.mozBoxShadow = 'none';
   inputBox.style.boxShadow = 'none';
 });
+
+
+/**
+ * Given an array, returns the minimum value present in the array.
+ * @param {array} arr - array to find the min.
+ * @returns {number} - Min. of the array.
+ */
+arrayMin = (arr) => {
+  return arr.reduce(
+    (a, b) => ( (a < b) ? a : b )
+  );
+}
+
+
+/**
+ * Given an array, returns the maximum value present in the array.
+ * @param {array} arr - array to find the max.
+ * @returns {number} - Max. of the array.
+ */
+arrayMax = (arr) => {
+  return arr.reduce(
+    (a, b) => ( (a > b) ? a : b )
+  );
+}
