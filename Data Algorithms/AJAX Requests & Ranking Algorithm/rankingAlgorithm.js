@@ -9,7 +9,7 @@
 getTopMatches = (typedText, data, quantity = 5) => {
     let successfulMatches = [];
     let minRating = 0.5;
-    let typedText = typedText.toLowerCase();
+    typedText = typedText.toLowerCase();
     for (let entry of data) {
         let lowerTitle = entry.title.toLowerCase();
         let entryRating = getTotalRating(lowerTitle, typedText);
@@ -35,9 +35,9 @@ getTopMatches = (typedText, data, quantity = 5) => {
  * @returns {number} - Min. of the array.
  */
 arrayMin = (arr) => {
-  return arr.reduce(function (a, b) {
-    return ( (a < b) ? a : b );
-  });
+  return arr.reduce(
+    (a, b) => ( (a < b) ? a : b )
+  );
 }
 
 
